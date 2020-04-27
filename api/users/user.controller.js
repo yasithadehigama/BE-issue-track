@@ -1,4 +1,7 @@
-const { create } = require("./user.service");
+const {
+    create,
+    getUserByNric
+} = require("./user.service");
 
 
 module.exports = {
@@ -16,6 +19,26 @@ module.exports = {
             return res.status(200).json({
                 data: results
             });
+        })
+    },
+
+    getUserbyNric: (req, res) => {
+        const nric = req.query.nric
+        getUserByNric(nric, (err, result) => {
+            if (err) {
+                console.log(err)
+            }
+            return res.status(200).json({
+                data: result
+            })
+        })
+    },
+
+    loginUser: (req, res) => {
+        console.log("asasas ", req.body);
+
+        return res.json({
+            "msg": "sasas"
         })
     }
 }
