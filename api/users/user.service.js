@@ -18,15 +18,13 @@ module.exports = {
     },
 
     getUserByNric: (nric, callback) => {
-
         const query = "SELECT * FROM `usertable` WHERE `nric`='" + nric + "'";
-
         console.log("NRC L ", query);
         db.query(query, (err, result) => {
             if (err) {
                 return callback(err);
             }
-            return callback(null, result);
+            return callback(null, JSON.parse(JSON.stringify(result)));
         })
     }
 }
