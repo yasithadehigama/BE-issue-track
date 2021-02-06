@@ -15,5 +15,18 @@ module.exports = {
             }
             return callback(null, result);
         })
+    },
+
+    getAllIssues: (data, callback) => {
+
+        const query = "SELECT * FROM `issuestable`";
+
+        db.query(query, (err, result, fields) => {
+            if (err) {
+                console.log(err);
+                callback(err);
+            }
+            return callback(null, result);
+        })
     }
 }
