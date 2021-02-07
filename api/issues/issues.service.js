@@ -28,5 +28,16 @@ module.exports = {
             }
             return callback(null, result);
         })
+    },
+
+    getIssuebyId: (id, callback) => {
+        const query = "SELECT * FROM `issuestable` WHERE `issueid`='" + id + "'";
+        console.log("NRC L ", query);
+        db.query(query, (err, result) => {
+            if (err) {
+                return callback(err);
+            }
+            return callback(null, JSON.parse(JSON.stringify(result)));
+        })
     }
 }

@@ -1,6 +1,7 @@
 const {
     create,
-    getAllIssues
+    getAllIssues,
+    getIssuebyId
 } = require("./issues.service");
 
 const jwt = require('jsonwebtoken');
@@ -33,6 +34,20 @@ module.exports = {
             return res.status(200).json({
                 data: results
             });
+        })
+    },
+
+    getIssuebyId: (req, res) => {
+        const id = req.query.id
+        getIssuebyId(id, (err, result) => {
+            if (err) {
+                res.status(500).json({
+                    message: err
+                })
+            }
+            return res.status(200).json({
+                data: result
+            })
         })
     },
 }
